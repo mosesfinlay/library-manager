@@ -1,0 +1,20 @@
+{
+  "name": "library-manager",
+  "version": "1.0.0",
+  "description": "This project is a website that uses the SQL ORM Sequelize. The site will use a SQLite database to store all of the books.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mosesfinlay/library-manager"
+  },
+  "keywords": [
+    "node",
+    "sql",
+    "sequelize"
+  ],
+  "author": "Moses Finlay",
+  "license": "GPL-3.0"
+}
