@@ -1,7 +1,7 @@
 # Techdegree Project Ten
 ## SQL Library Manager
 
-This project is a website that uses the SQL ORM Sequelize. The site will use a SQLite database to store all of the books.
+This project is a library manager built using JavaScript, Node.js, Express, Pug, and the SQL ORM Sequelize. The site will use a SQLite database to store all of the library books.
 
 ## Usage
 
