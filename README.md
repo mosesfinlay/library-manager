@@ -9,6 +9,10 @@ Clone the repo from github
 ```
 git clone https://github.com/mosesfinlay/library-manager.git
 ```
+Move into the library-manager directory
+```
+cd library-manager
+```
 Install the dependencies
 ```
 npm install

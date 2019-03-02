@@ -15,15 +15,19 @@ router.get("/books", (req, res) => {
         paginationButtons.push(i);
       }
       
-      // Set the offset for the offset
-      if (req.query.offset !== undefined) {
-        // If the offset is less than 1
-        if (req.query.offset < 1) {
-          res.redirect("/books?offset=1");
-        } else if (req.query.offset > (totalBooks / 5)) { // If the offset is greater than the highest the offset should be
-          res.redirect("/books?offset=1");
-        } else { // If every thing is normal
-          options.offset = (parseInt(req.query.offset) * 5) - 5;
+      // If there is no need for pagination links
+      if (totalBooks <= 5) {
+        paginationButtons = [];
+      } else {
+        // Set the offset for the options variable
+        if (req.query.offset !== undefined) {
+          if (req.query.offset < 1) { // If the offset is less than 1
+            res.redirect("/books?offset=1");
+          } else if (req.query.offset > Math.ceil(totalBooks / 5)) { // If the offset is greater than the number of book divided by 5
+            res.redirect("/books?offset=1");
+          } else { // If every thing is normal
+            options.offset = (parseInt(req.query.offset) * 5) - 5;
+          }
         }
       }
     }).then(() => {
