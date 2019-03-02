@@ -4,6 +4,8 @@ block content
   h1 Books
     p
       a.button(href="/books/new") Create New Book
+    p
+      a.button(href="/books") All books
     form(action="/books/search", method="post")
       input(type="search", name="query", placeholder="Search for books")
       input(type="submit", value="Search")
