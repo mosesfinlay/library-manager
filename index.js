@@ -9,9 +9,13 @@ app.set("view engine", "pug");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const routes = require("./routes/");
+const homeRoute = require("./routes/");
+const searchBooksRoutes = require("./routes/search-books");
+const bookRoutes = require("./routes/books");
 
-app.use(routes);
+app.use(homeRoute);
+app.use(searchBooksRoutes);
+app.use(bookRoutes);
 
 app.use((req, res, next) => {
   const err = new Error("Page Not Found");
