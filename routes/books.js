@@ -5,7 +5,7 @@ const Book = require("../models").Book;
 
 router.get("/books", (req, res) => {
   let options = { limit: 5, offset: 0 };
-  const paginationButtons = [];
+  let paginationButtons = [];
 
   // For pagination links
   Book.count()
