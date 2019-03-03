@@ -10,6 +10,9 @@ block content
       input(type="search", name="query", placeholder="Search for books")
       input(type="submit", value="Search")
   if books.length
+    if showPageInfo
+      h5 Page: #{currentPage}
+        span.text-muted &nbsp;(Showing 10 out of #{booksCount} books)
     table
       thead
         tr
@@ -28,4 +31,4 @@ block content
     each button in paginationButtons
       a.button(href=`?offset=${button}`)= button 
   else
-    h3 No results have been returned for that query
+    h3 No books were found.

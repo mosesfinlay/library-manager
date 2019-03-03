@@ -28,7 +28,7 @@ router.post("/books/search", (req, res) => {
     };
   
     Book.findAll(options)
-      .then(books => res.render("index", { books, paginationButtons: [] }))
+      .then(books => res.render("index", { books, paginationButtons: [], showPageInfo: false }))
       .catch(err => res.render("error", { err }));
   }
 });

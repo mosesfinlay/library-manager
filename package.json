@@ -4,7 +4,8 @@
   "description": "This project is a website that uses the SQL ORM Sequelize. The site will use a SQLite database to store all of the books.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "seed": "node_modules/.bin/sequelize db:seed:all"
   },
   "repository": {
     "type": "git",

@@ -4,14 +4,20 @@ const router = express.Router();
 const Book = require("../models").Book;
 
 router.get("/books", (req, res) => {
-  let options = { limit: 5, offset: 0 };
+  let options = { limit: 10, offset: 0 };
   let paginationButtons = [];
+  let booksCount = 0;
+  let currentPage = 1;
 
   // For pagination links
   Book.count()
     .then(totalBooks => {
+      booksCount = totalBooks;
+
+      const totalPaginationButtons = (totalBooks / 5) + 1;
+
       // Get the total number of buttons to be displayed
-      for (let i = 1; i < (totalBooks / 5) + 1; i++) {
+      for (let i = 1; i < totalPaginationButtons; i++) {
         paginationButtons.push(i);
       }
       
@@ -21,10 +27,11 @@ router.get("/books", (req, res) => {
       } else {
         // Set the offset for the options variable
         if (req.query.offset !== undefined) {
+          currentPage = req.query.offset;
           if (req.query.offset < 1) { // If the offset is less than 1
             res.redirect("/books?offset=1");
           } else if (req.query.offset > Math.ceil(totalBooks / 5)) { // If the offset is greater than the number of book divided by 5
-            res.redirect("/books?offset=1");
+            res.redirect(`/books?offset=${totalPaginationButtons - 1}`);
           } else { // If every thing is normal
             options.offset = (parseInt(req.query.offset) * 5) - 5;
           }
@@ -32,7 +39,7 @@ router.get("/books", (req, res) => {
       }
     }).then(() => {
       Book.findAll(options)
-        .then(books => res.render("index", { books, paginationButtons }))
+        .then(books => res.render("index", { books, paginationButtons, currentPage, booksCount, showPageInfo: true }))
         .catch(err => res.render("error", { err }));
     });
 });

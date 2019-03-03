@@ -17,6 +17,10 @@ Install the dependencies
 ```
 npm install
 ```
+Put sample content in the database
+```
+npm run seed
+```
 Start the site
 ```
 npm start
