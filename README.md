@@ -19,7 +19,7 @@ npm install
 ```
 Put sample content in the database
 ```
-npm run seed
+npm run seed-db
 ```
 Start the site
 ```
